@@ -1,0 +1,72 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: fanzi03
+      changes:
+        - addColumn:
+            tableName: trains
+            columns:
+              - column:
+                  name: railway_station_id
+                  type: BIGINT
+              - column:
+                  name: road_id
+                  type: BIGINT
+
+        - addForeignKeyConstraint:
+            constraintName: fk_train_station
+            baseTableName: trains
+            baseColumnNames: railway_station_id
+            referencedTableName: railway_stations
+            referencedColumnNames: id
+            onDelete: SET NULL
+
+        - addForeignKeyConstraint:
+            constraintName: fk_train_road
+            baseTableName: trains
+            baseColumnNames: road_id
+            referencedTableName: roads
+            referencedColumnNames: id
+            onDelete: SET NULL
+
+  - changeSet:
+      id: 3
+      author: fanzi03
+      changes:
+        - createTable:
+            tableName: road_station
+            columns:
+              - column:
+                  name: road_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: station_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: dummy
+                  type: BOOLEAN # заглушка если нужно
+
+        - addPrimaryKey:
+            tableName: road_station
+            columnNames: road_id, station_id
+            constraintName: pk_road_station
+
+        - addForeignKeyConstraint:
+            constraintName: fk_road
+            baseTableName: road_station
+            baseColumnNames: road_id
+            referencedTableName: roads
+            referencedColumnNames: id
+            onDelete: CASCADE
+
+        - addForeignKeyConstraint:
+            constraintName: fk_station
+            baseTableName: road_station
+            baseColumnNames: station_id
+            referencedTableName: railway_stations
+            referencedColumnNames: id
+            onDelete: CASCADE

@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/tables/create-tables.yml
+  - include:
+      file: db/changelog/constraints/add-constraints.yml
+  - include:
+      file: db/changelog/data/insert-data.yml
