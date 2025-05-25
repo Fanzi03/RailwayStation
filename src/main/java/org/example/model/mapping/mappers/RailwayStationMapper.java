@@ -15,7 +15,6 @@ public interface RailwayStationMapper {
     RailwayStation toEntityWithMoreInfo(
             RailwayStationWithDetailsDataTransferObject railwayStationWithDetailsDataTransferObject
     );
-    @Mapping(target = "id", ignore = true)
     RailwayStationWithDetailsDataTransferObject toDTOWithDetails(RailwayStation railwayStation);
 
 }
