@@ -12,4 +12,5 @@ public interface RoadService {
     void save(Road road);
     void delete(Road road);
     void update(Road road);
+    Road findById(Long id);
 }

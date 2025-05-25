@@ -5,9 +5,7 @@ import org.example.model.entity.Train;
 import org.example.model.mapping.dto.TrainDataTransferObject;
 import org.example.repository.RailwayStationRepository;
 import org.example.repository.RoadRepository;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
+import org.mapstruct.*;
 
 @Mapper(componentModel = "spring", uses = {RoadMapper.class, RailwayStationMapper.class})
 public interface TrainMapper {
@@ -20,13 +18,15 @@ public interface TrainMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "road", ignore = true)
     @Mapping(target = "railwayStation", ignore = true)
-    Train toEntity(TrainDataTransferObject trainDataTransferObject);
+    Train toEntity(TrainDataTransferObject trainDataTransferObject, @Context RoadRepository roadRepository,
+                   @Context RailwayStationRepository railwayStationRepository);
 
+    @AfterMapping
     default void fillRoadAndStations(
             @MappingTarget Train train,
             TrainDataTransferObject dto,
-            RoadRepository roadRepository,
-            RailwayStationRepository stationRepository
+            @Context RoadRepository roadRepository,
+            @Context RailwayStationRepository stationRepository
     ) {
         train.setRoad(
                 roadRepository.findByName(dto.getNameOfRoad())
