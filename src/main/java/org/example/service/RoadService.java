@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface RoadService {
     RoadWithDetailsDataTransferObject getRoadWithDetails(Long roadId);
     List<RoadDataTransferObject> findAll();
     RoadDataTransferObject findByName(String name);
+    Road findEntityByName(String name);
     void save(RoadDataTransferObject roadDataTransferObject);
     void delete(Long id);
     void update(RoadDataTransferObject roadDataTransferObject, Long id);

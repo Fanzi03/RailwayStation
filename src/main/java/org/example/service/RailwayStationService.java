@@ -1,5 +1,6 @@
 package org.example.service;
 
+import org.example.model.entity.RailwayStation;
 import org.example.model.mapping.dto.RailwayStationDataTransferObject;
 import org.example.model.mapping.dto.util.RailwayStationWithDetailsDataTransferObject;
 
@@ -10,6 +11,7 @@ public interface RailwayStationService {
     RailwayStationWithDetailsDataTransferObject getRailwayStationWithDetails(Long stationId);
     List<RailwayStationDataTransferObject> findAll();
     RailwayStationDataTransferObject findByName(String name);
+    RailwayStation findEntityByName(String name);
     void save(RailwayStationDataTransferObject railwayStationDataTransferObject);
     void delete(RailwayStationDataTransferObject railwayStationDataTransferObject);
     void update(RailwayStationDataTransferObject railwayStationDataTransferObject, Long id);

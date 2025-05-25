@@ -49,6 +49,14 @@ public class RailwayStationServiceImpl implements RailwayStationService {
     }
 
     @Override
+    public RailwayStation findEntityByName(String name) {
+        return repository.findByName(name).orElseThrow(
+                () -> new NoSuchElementException("Railway station with name" + name + " not found")
+        );
+    }
+
+
+    @Override
     public void save(RailwayStationDataTransferObject railwayStationDataTransferObject) {
         RailwayStation railwayStation = railwayStationMapper.toEntity(railwayStationDataTransferObject);
         repository.save(railwayStation);
