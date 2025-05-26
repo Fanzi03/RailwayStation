@@ -3,7 +3,7 @@ package org.example.model.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.example.model.entity.enums.StatusOfRoad;
+import org.example.enums.StatusOfRoad;
 
 import java.util.List;
 
@@ -16,10 +16,11 @@ public class Road {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    @Column(name = "name", nullable = false)
     String name;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status_road")
+    @Column(name = "status_road", length = 55, nullable = false)
     StatusOfRoad statusOfRoad;
 
     @ManyToMany(fetch = FetchType.EAGER)

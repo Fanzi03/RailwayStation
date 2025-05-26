@@ -46,10 +46,7 @@ databaseChangeLog:
                   type: BIGINT
                   constraints:
                     nullable: false
-              - column:
-                  name: dummy
-                  type: BOOLEAN # заглушка если нужно
-
+      
         - addPrimaryKey:
             tableName: road_station
             columnNames: road_id, station_id

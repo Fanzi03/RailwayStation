@@ -4,8 +4,8 @@ import jakarta.validation.constraints.*;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
-import org.example.model.entity.enums.StatusOfTrain;
-import org.example.model.entity.enums.TypeOfTrain;
+import org.example.enums.StatusOfTrain;
+import org.example.enums.TypeOfTrain;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -22,8 +22,7 @@ public class TrainDataTransferObject {
     @Size(min = 1, max = 2000, message = "Version must be normal size")
     String version;
     @NotNull(message = "Number is required")
-    @Max(value = 59, message = "Number must be < 59")
-    @Min(value = 2,message = "Number must be positive")
+    @Min(value = 59, message = "Number must be < 59symbols")
     Long number;
     String nameOfRoad;
     String nameOfStation;

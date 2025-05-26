@@ -3,8 +3,8 @@ package org.example.model.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.example.model.entity.enums.StatusOfTrain;
-import org.example.model.entity.enums.TypeOfTrain;
+import org.example.enums.StatusOfTrain;
+import org.example.enums.TypeOfTrain;
 
 @Data
 @NoArgsConstructor
@@ -15,17 +15,17 @@ public class Train {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     String name;
     @Enumerated(EnumType.STRING)
-    @Column(name = "type")
+    @Column(name = "type", length = 55, nullable = false)
     TypeOfTrain type;
     @Enumerated(EnumType.STRING)
-    @Column(name = "status_train")
+    @Column(name = "status_train", length = 55, nullable = false)
     StatusOfTrain statusOfTrain;
-    @Column(name = "version")
+    @Column(name = "version", nullable = false)
     String version;
-    @Column(name = "number", unique = true)
+    @Column(name = "number", unique = true, nullable = false)
     Long number;
 
     @ManyToOne(optional = true)

@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
-import org.example.model.entity.enums.StatusOfRailwayStation;
+import org.example.enums.StatusOfRailwayStation;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)

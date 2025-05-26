@@ -14,7 +14,7 @@ CREATE TABLE trains
     type               VARCHAR(55),
     status_train       VARCHAR(55),
     version            VARCHAR(100),
-    number             VARCHAR(100) UNIQUE,
+    number             BIGINTEGER UNIQUE,
     railway_station_id BIGINT,
     road_id            BIGINT,
     CONSTRAINT fk_train_road FOREIGN KEY (road_id)

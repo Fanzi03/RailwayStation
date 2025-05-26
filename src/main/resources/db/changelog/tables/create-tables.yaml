@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: fanzi03
+      runOnChange: true
+      changes:
+        - createTable:
+            tableName: roads
+            columns:
+              - column: {name: id, type: BIGSERIAL, autoIncrement: true, constraints: { primaryKey: true}}
+              - column: {name: name, type: VARCHAR(100), constraints: { unique: true, nullable: false } }
+              - column: {name: status_road, type: VARCHAR(55), constraints: { nullable: false }}
+        - createTable:
+            tableName: trains
+            columns:
+              - column: {name: id, type: BIGSERIAL, autoIncrement: true, constraints: { primaryKey: true } }
+              - column: {name: name, type: VARCHAR(100), constraints: { nullable: false } }
+              - column: {name: type, type: VARCHAR(55), constraints: { nullable: false }}
+              - column: {name: status_train, type: VARCHAR(55), constraints: { nullable: false }}
+              - column: {name: version, type: VARCHAR(100), constraints: { nullable: false }}
+              - column: {name: number, type: BIGINT, constraints: { unique: true, nullable: false } }
+        - createTable:
+            tableName: railway_stations
+            columns:
+              - column: {name: id, type: BIGSERIAL, autoIncrement: true, constraints: { primaryKey: true}}
+              - column: {name: name, type: VARCHAR(255), constraints: {unique: true, nullable: false } }
+              - column: {name: status_station, type: VARCHAR(55), constraints: { nullable: false }}
+              - column: {name: free_places, type: INTEGER, constraints: { nullable: false }}

@@ -21,20 +21,20 @@ databaseChangeLog:
             tableName: roads
             columns:
               - column: {name: name, value: "North Road"}
-              - column: {name: status_road, value: "OPERATIONAL"}
+              - column: {name: status_road, value: "OPEN"}
 
         - insert:
             tableName: roads
             columns:
               - column: {name: name, value: "South Road"}
-              - column: {name: status_road, value: "UNDER_CONSTRUCTION"}
+              - column: {name: status_road, value: "BROKEN"}
 
         - insert:
             tableName: trains
             columns:
               - column: {name: name, value: "Train Alpha"}
-              - column: {name: type, value: "Cargo"}
-              - column: {name: status_train, value: "READY"}
+              - column: {name: type, value: "CARGO"}
+              - column: {name: status_train, value: "WAITING"}
               - column: {name: version, value: "v1.0"}
               - column: {name: number, value: "A123"}
               - column: {name: railway_station_id, valueComputed: "(SELECT id FROM railway_stations WHERE name='Station A')"}
@@ -44,8 +44,8 @@ databaseChangeLog:
             tableName: trains
             columns:
               - column: {name: name, value: "Train Beta"}
-              - column: {name: type, value: "Passenger"}
-              - column: {name: status_train, value: "MAINTENANCE"}
+              - column: {name: type, value: "PASSENGER"}
+              - column: {name: status_train, value: "WAITING"}
               - column: {name: version, value: "v2.1"}
               - column: {name: number, value: "B456"}
               - column: {name: railway_station_id, valueComputed: "(SELECT id FROM railway_stations WHERE name='Station B')"}

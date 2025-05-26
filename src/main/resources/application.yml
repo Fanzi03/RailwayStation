@@ -1,6 +1,6 @@
 spring:
   liquibase:
-    change-log: classpath:/db/changelog/db.changelog-master.yaml
+    change-log: classpath:db/changelog/Master.yaml
     enabled: true
     default-schema: public
     drop-first: false # true если надо дропать таблицы перед запуском!
@@ -22,3 +22,8 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   main:
     lazy-initialization: true
+
+#logging:
+#  level:
+#    org.liquibase: DEBUG
+#    root: DEBUG
