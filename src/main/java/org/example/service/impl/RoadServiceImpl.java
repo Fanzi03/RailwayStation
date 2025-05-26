@@ -48,7 +48,7 @@ public class RoadServiceImpl implements RoadService {
     @Override
     public Road findEntityByName(String name) {
         return roadRepository.findByName(name).orElseThrow(
-                () -> new NoSuchElementException("Road with name " + name + " not found")
+                () -> new NoSuchElementException("Road with na'me " + name + " not found")
         );
     }
 

@@ -13,7 +13,7 @@ public interface RailwayStationService {
     RailwayStationDataTransferObject findByName(String name);
     RailwayStation findEntityByName(String name);
     void save(RailwayStationDataTransferObject railwayStationDataTransferObject);
-    void delete(RailwayStationDataTransferObject railwayStationDataTransferObject);
+    void delete(Long stationId);
     void update(RailwayStationDataTransferObject railwayStationDataTransferObject, Long id);
     RailwayStationDataTransferObject findById(Long id);
 }

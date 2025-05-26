@@ -63,9 +63,10 @@ public class RailwayStationServiceImpl implements RailwayStationService {
     }
 
     @Override
-    public void delete(RailwayStationDataTransferObject railwayStationDataTransferObject) {
-        RailwayStation railwayStation = railwayStationMapper.toEntity(railwayStationDataTransferObject);
-        repository.delete(railwayStation);
+    public void delete(Long id) {
+        repository.delete(repository.findById(id).orElseThrow(
+                () -> new NoSuchElementException("Railway station with id" + id + " not found"))
+        );
     }
 
 

@@ -1,4 +1,7 @@
 package org.example.exception;
 
-public class ExceptionHandler {
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
 }
