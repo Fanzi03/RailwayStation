@@ -4,9 +4,9 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
-import org.example.model.entity.Road;
-import org.example.model.entity.Train;
 import org.example.model.mapping.dto.RailwayStationDataTransferObject;
+import org.example.model.mapping.dto.RoadDataTransferObject;
+import org.example.model.mapping.dto.TrainDataTransferObject;
 
 import java.util.List;
 
@@ -14,6 +14,6 @@ import java.util.List;
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class RailwayStationWithDetailsDataTransferObject extends RailwayStationDataTransferObject {
-    List<Road> roads;
-    List<Train> trains;
+    List<RoadDataTransferObject> roads;
+    List<TrainDataTransferObject> trains;
 }

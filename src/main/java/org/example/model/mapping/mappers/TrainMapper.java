@@ -1,12 +1,16 @@
 package org.example.model.mapping.mappers;
 
+import org.example.model.entity.RailwayStation;
+import org.example.model.entity.Road;
 import org.example.model.entity.Train;
 import org.example.model.mapping.dto.TrainDataTransferObject;
 import org.example.service.RailwayStationService;
 import org.example.service.RoadService;
 import org.mapstruct.*;
 
-@Mapper(componentModel = "spring", uses = {RoadMapper.class, RailwayStationMapper.class})
+import java.util.Optional;
+
+@Mapper(componentModel = "spring")
 public interface TrainMapper {
     @Mapping(target = "nameOfRoad",
             expression = "java(train.getRoad() != null ? train.getRoad().getName() : null)")
@@ -27,7 +31,16 @@ public interface TrainMapper {
             @Context RoadService roadService,
             @Context RailwayStationService railwayStationService
     ) {
-        train.setRoad(roadService.findEntityByName(dto.getNameOfRoad()));
+        if (dto.getNameOfRoad() != null){
+            Optional<Road> maybeRoad = Optional.ofNullable(roadService.findEntityByName(dto.getNameOfRoad()));
+            maybeRoad.ifPresent(train::setRoad);
+        }
         train.setRailwayStation(railwayStationService.findEntityByName(dto.getNameOfStation()));
+        if(dto.getNameOfStation() != null){
+            Optional<RailwayStation> maybeRailwayStation = Optional.ofNullable(
+                    railwayStationService.findEntityByName(dto.getNameOfStation())
+            );
+            maybeRailwayStation.ifPresent(train::setRailwayStation);
+        }
     }
 }

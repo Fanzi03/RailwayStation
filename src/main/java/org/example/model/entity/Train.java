@@ -26,7 +26,7 @@ public class Train {
     @Column(name = "version")
     String version;
     @Column(name = "number", unique = true)
-    long number;
+    Long number;
 
     @ManyToOne(optional = true)
     @JoinColumn(name = "road_id")

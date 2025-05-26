@@ -15,7 +15,7 @@ public class TrainDataTransferObject {
     @Size(min = 3, max = 255, message = "Name must be normal size")
     String name;
     @NotNull(message = "Type of train is required")
-    TypeOfTrain typeOfTrain;
+    TypeOfTrain type;
     @NotNull(message = "Status of train is required")
     StatusOfTrain statusOfTrain;
     @NotBlank(message = "Version is required")
